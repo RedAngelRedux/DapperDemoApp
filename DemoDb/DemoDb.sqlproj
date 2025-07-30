@@ -71,6 +71,7 @@
     <Build Include="Stored Procedures\spUsers_GetReturnValue.sql" />
     <Build Include="Stored Procedures\spUsers_GetDataWithOutput.sql" />
     <Build Include="Tables\Email.sql" />
+    <Build Include="Stored Procedures\spUsers_UpdateName.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\DemoDb.publish.xml" />

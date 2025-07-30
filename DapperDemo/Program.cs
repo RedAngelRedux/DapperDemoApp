@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
-using Dapper;
-using DapperDemo.Models;
 using DapperDemo.Modules;
+using DapperDemo.Services;
+using DapperDemo.Models;
 
 // Prepare the console application to use Dapper with SQL Server
 var config = new ConfigurationBuilder()
@@ -12,11 +12,10 @@ var config = new ConfigurationBuilder()
     .AddUserSecrets<Program>(optional: true)
     .Build();
 
-string? connectionString = config.GetConnectionString("DefaultConnection");
 
-using IDbConnection db = new SqlConnection(connectionString);
-
-// BASIC DAPPER USAGE
+//// BASIC DAPPER USAGE
+//string? connectionString = config.GetConnectionString("DefaultConnection");
+//using IDbConnection db = new SqlConnection(connectionString);
 //await  BasicDapper.SimulateSqlInjectionAttack(db);
 //await  BasicDapper.SimpleDapperCall_RawSql(db);
 //await  BasicDapper.SimpleDapperCall_StoredProcedure(db);
@@ -29,6 +28,16 @@ using IDbConnection db = new SqlConnection(connectionString);
 //await  BasicDapper.OutputParameters(db);
 
 // COMPLEX OBJECTS
+//string? connectionString = config.GetConnectionString("DefaultConnection");
+//using IDbConnection db = new SqlConnection(connectionString);
 //await ComplexOjects.MultipleResults(db);
 //await ComplexOjects.NestedObjects_OneToOne(db);
-await ComplexOjects.NestedObjects_OneToMany(db);
+//await ComplexOjects.NestedObjects_OneToMany(db);
+
+//// CODE SIMPLIFICATION
+///
+SqlDataAccess sqlDataAccess = new (config);
+
+//await CodeSimplification.ShowTop10Users(sqlDataAccess);
+//await CodeSimplification.ShowTop10Addresses(sqlDataAccess);
+await CodeSimplification.UpdateUserName(sqlDataAccess);
